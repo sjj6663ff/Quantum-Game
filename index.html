@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>量子互动小说</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 手机状态栏 -->
+    <div class="status-bar">
+        <div class="status-time">14:26</div>
+        <div class="status-icons">📶📶 🔋🔋 100%</div>
+    </div>
+
+    <!-- 手机APP主容器 -->
+    <div class="app-container">
+        <!-- APP内容区域 -->
+        <div class="app-content">
+            <!-- 顶部导航区域 -->
+            <div class="app-header">
+                <button class="recharge-btn" id="recharge-btn">充值入口</button>
+                <button class="free-coins-btn" id="free-coins-btn">免费获取</button>
+                <div class="coin-display">
+                    <span id="coin-count">325</span> 阅读币
+                </div>
+            </div>
+
+            <!-- 剧本库标题 -->
+            <div class="section-title">剧本库</div>
+
+            <!-- 剧本网格 -->
+            <div class="library-grid" id="library-grid">
+                <!-- 剧本卡片将通过JS动态生成 -->
+            </div>
+        </div>
+
+        <!-- 手机底部指示条 (iOS风格) -->
+        <div class="home-indicator"></div>
+    </div>
+
+    <!-- 阅读器界面 -->
+    <div id="reader-section">
+        <div class="reader-header">
+            <button class="reader-back-btn" id="reader-back">←</button>
+            <div class="reader-title" id="reader-story-title">量子情缘</div>
+            <div class="reader-controls">
+                <button id="font-smaller">A-</button>
+                <button id="font-reset">A</button>
+                <button id="font-larger">A+</button>
+            </div>
+        </div>
+
+        <!-- 阅读进度条 -->
+        <div class="progress-container">
+            <div class="progress-bar" id="reading-progress"></div>
+        </div>
+
+        <div class="reader-content">
+            <h2 class="chapter-title" id="chapter-title">第一章：神秘的相遇</h2>
+            <div class="story-text" id="story-content">
+                <!-- 故事内容将通过JS动态填充 -->
+            </div>
+
+            <div class="choices-container" id="choices-container">
+                <!-- 选择项将通过JS动态填充 -->
+            </div>
+        </div>
+
+        <!-- 章节导航 -->
+        <div class="chapter-nav">
+            <button id="prev-chapter">上一章</button>
+            <button id="next-chapter">下一章</button>
+        </div>
+    </div>
+
+    <!-- 充值弹窗 -->
+    <div id="payment-modal">
+        <div class="payment-content">
+            <div class="payment-header">充值套餐</div>
+
+            <div class="payment-option">
+                <div class="payment-info">
+                    <div class="payment-title">入门套餐</div>
+                    <div class="payment-desc">3个阅读币</div>
+                </div>
+                <div class="payment-price">¥0.29</div>
+                <button class="pay-btn" data-package="starter">充值</button>
+            </div>
+
+            <div class="payment-option">
+                <div class="payment-info">
+                    <div class="payment-title">标准套餐</div>
+                    <div class="payment-desc">5个阅读币</div>
+                </div>
+                <div class="payment-price">¥0.49</div>
+                <button class="pay-btn" data-package="standard">充值</button>
+            </div>
+
+            <div class="payment-option">
+                <div class="payment-info">
+                    <div class="payment-title">超值套餐</div>
+                    <div class="payment-desc">10个阅读币</div>
+                </div>
+                <div class="payment-price">¥0.99</div>
+                <button class="pay-btn" data-package="premium">充值</button>
+            </div>
+
+            <button class="close-payment" id="close-payment">关闭</button>
+        </div>
+    </div>
+
+    <!-- 广告弹窗 -->
+    <div id="ad-modal">
+        <div class="ad-content">
+            <h2 class="ad-header">观看广告获取阅读币</h2>
+            <div class="ad-video">广告播放中...</div>
+            <div class="ad-reward">
+                <p>观看完整广告可获得<span style="color:#FFD700;font-weight:bold">1个</span>阅读币</p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="ad-progress"></div>
+            </div>
+            <p id="ad-timer">广告剩余: 30秒</p>
+            <button class="ad-close" id="close-ad">关闭广告</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

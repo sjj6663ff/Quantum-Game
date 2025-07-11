@@ -1,0 +1,523 @@
+/* === 全局样式 === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* === 手机状态栏 === */
+.status-bar {
+    background: #FFFFFF;
+    height: 44px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.status-time {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* === APP主容器 === */
+.app-container {
+    width: 100%;
+    height: calc(100vh - 44px);
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === APP内容区域 === */
+.app-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 16px;
+}
+
+/* === 顶部导航区域 === */
+.app-header {
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.recharge-btn {
+    background: #6C5CE7;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(108, 92, 231, 0.3);
+    flex: 1;
+    white-space: nowrap;
+}
+
+.free-coins-btn {
+    background: #00CEC9;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(0, 206, 201, 0.3);
+    flex: 1;
+    white-space: nowrap;
+}
+
+.coin-display {
+    background: linear-gradient(135deg, #FFD700, #FFB700);
+    padding: 10px 16px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    box-shadow: 0 3px 10px rgba(255, 183, 0, 0.3);
+    flex: 1;
+    white-space: nowrap;
+}
+
+/* === 剧本库标题 === */
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 24px 0 16px;
+    color: #333;
+}
+
+/* === 剧本网格布局 === */
+.library-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding-bottom: 24px;
+}
+
+/* === 剧本卡片样式 === */
+.book-card {
+    background: #F8F9FF;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #EDF0FC;
+    transition: transform 0.2s ease;
+}
+
+    .book-card:active {
+        transform: scale(0.98);
+    }
+
+.book-cover {
+    height: 120px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 12px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.book-title {
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* 剧本元信息（题材和时长） */
+.book-meta {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #666;
+}
+
+.book-category, .book-duration {
+    display: flex;
+    align-items: center;
+}
+
+/* 解锁状态显示 */
+.unlock-status {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.unlocked {
+    color: #00CEC9;
+    background: rgba(0, 206, 201, 0.1);
+}
+
+.locked {
+    color: #6C5CE7;
+    background: rgba(108, 92, 231, 0.1);
+}
+
+.read-btn {
+    background: #6C5CE7;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+}
+
+/* === 底部指示器（手机APP专用） === */
+.home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: #000;
+    border-radius: 3px;
+    opacity: 0.3;
+}
+
+/* === 阅读器界面 === */
+#reader-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    display: none; /* 默认隐藏 */
+}
+
+.reader-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.reader-back-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.reader-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 10px;
+    color: #333;
+    flex: 1;
+}
+
+.reader-controls {
+    display: flex;
+    gap: 8px;
+}
+
+    .reader-controls button {
+        background: #f0f3ff;
+        border: 1px solid #6C5CE7;
+        border-radius: 4px;
+        width: 36px;
+        height: 36px;
+        font-weight: bold;
+    }
+
+/* 阅读进度条 */
+.progress-container {
+    height: 4px;
+    background: #f0f3ff;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #6C5CE7;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.reader-content {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+.chapter-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #6C5CE7;
+}
+
+.story-text {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    white-space: pre-line;
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.choice-btn {
+    background: #F0F3FF;
+    border: 2px solid #6C5CE7;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+    .choice-btn:active {
+        background: #6C5CE7;
+        color: white;
+    }
+
+/* 章节导航 */
+.chapter-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f8f9ff;
+    border-top: 1px solid #eee;
+}
+
+    .chapter-nav button {
+        background: #6C5CE7;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 24px;
+        font-size: 16px;
+    }
+
+/* === 充值弹窗 === */
+#payment-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    display: none;
+}
+
+.payment-content {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+}
+
+.payment-header {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.payment-info {
+    text-align: left;
+}
+
+.payment-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.payment-desc {
+    font-size: 14px;
+    color: #666;
+}
+
+.payment-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e91e63;
+}
+
+.pay-btn {
+    background: #6C5CE7;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.close-payment {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: #f5f7fa;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* === 广告弹窗 === */
+#ad-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    display: none;
+}
+
+.ad-content {
+    background: #1e293b;
+    color: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    padding: 24px;
+    text-align: center;
+}
+
+.ad-header {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.ad-video {
+    width: 100%;
+    height: 200px;
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #94a3b8;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.ad-reward {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #334155;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress {
+    height: 100%;
+    background: #3b82f6;
+    width: 0%;
+}
+
+.ad-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* === 专门针对手机设计的响应式优化 === */
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+
+    .library-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-cover {
+        height: 140px;
+    }
+
+    .app-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .recharge-btn, .free-coins-btn, .coin-display {
+        width: 100%;
+    }
+}
